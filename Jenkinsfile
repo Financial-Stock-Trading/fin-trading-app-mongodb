@@ -28,7 +28,7 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {
-             sh 'envsubst < ${WORKSPACE}/key.txt | kubectl create secret generic shared-bootstrap-data --from-file=internal-auth-mongodb-keyfile= -'  
+             sh 'envsubst < ${WORKSPACE}/key.txt | kubectl create secret generic shared-bootstrap-data --from-file=internal-auth-mongodb-keyfile= '  
              sh 'envsubst < ${WORKSPACE}/deploy.yml | kubectl apply -f -'
 
           }
