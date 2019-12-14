@@ -36,10 +36,10 @@ pipeline {
             //sh 'sudo make'
             //sh 'sudo make install'
              //sh 'openssl rand -base64 741 > ./key.txt'
-             sh 'apt-get install'
-             sh 'apt-get install libssl-dev'
-             sh 'export FOO=${WORKSPACE}'
-             sh 'kubectl create secret generic shared-bootstrap-data --from-file=internal-auth-mongodb-keyfile=./key.txt'  
+             //sh 'apt-get install'
+             //sh 'apt-get install libssl-dev'
+             //sh 'export FOO=${WORKSPACE}'
+             //sh 'kubectl create secret generic shared-bootstrap-data --from-file=internal-auth-mongodb-keyfile=./key.txt'  
              sh 'envsubst < ${WORKSPACE}/deploy.yml | kubectl apply -f -'
 
           }
