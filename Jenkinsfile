@@ -28,7 +28,7 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {
-             sh 'openssl rand -base64 741 > ./${WORKSPACE}/key.txt'
+             sh 'openssl rand -base64 741 > .${WORKSPACE}/key.txt'
              sh 'export FOO=${WORKSPACE}'
              sh 'kubectl create secret generic shared-bootstrap-data --from-file=internal-auth-mongodb-keyfile=.$FOO/key.txt | envsubst $FOO'  
              sh 'envsubst < ${WORKSPACE}/deploy.yml | kubectl apply -f -'
